@@ -219,6 +219,16 @@
     </div>
 </div>
 <div class="child_part-2">
+  <div class="advance-control">
+    <button>
+      <i class="ti ti-chevron-left"></i>
+    </button>
+    <button>
+      <i class="ti ti-chevron-right"></i>
+    </button>
+  </div>
+</div>
+<!-- <div class="child_part-2">
     <div class="price-indicator">
         <div class="label">Great</div>
         <div class="label">Good</div>
@@ -228,10 +238,10 @@
         </div>
         <div class="label">High</div>
       </div>
-</div>
+</div> -->
 </div>
 <div class="third-section">
-    <p>There are 160 points available for 2024. 160 Points available for 2025, 160 points available for <br>2026</p>
+    <p>There are 160 points available for 2024. 160 Points available for 2025, 160 points available for 2026</p>
     <div class="border-line"></div>
     <p class="fst-italic">Similar Animal Kingdom Listings</p>
 
@@ -342,17 +352,25 @@
                  <div id="finance" class="tab-content" style="display: none;">
                     <div class="finance-field">
                       <label>Loan Term</label>
-                      <select>
-                        <option>10</option>
-                        <option>7</option>
-                        <option>5</option>
-                      </select>
+                      <div class="loan-term-input">
+                        <button class="left-btn" type="button">
+                          <i class="ti ti-chevron-left"></i>
+                        </button>
+                        <input type="number" id="loanInput" value="10">
+                        <button class="right-btn" type="button">
+                          <i class="ti ti-chevron-right"></i>
+                        </button>
+                      </div>
+                      
+                      
+                      
+                      
                     </div>
                 
                     <div class="finance-field_credit">
                       <label>Credit Type</label>
                       <div class="credit-type">
-                        <button onclick="selectCredit(this)">No</button>
+                        <button onclick="selectCredit(this)" class="selected">No Check</button>
                         <button onclick="selectCredit(this)">Fair</button>
                         <button onclick="selectCredit(this)">Good</button>
                         <button onclick="selectCredit(this)">Excellent</button>
@@ -377,7 +395,7 @@
                       Monthly Payment: $150.00
                     </div>
                 
-                    <div class="terms">Edit Terms & Conditions</div>
+                    <!-- <div class="terms">Edit Terms & Conditions</div> -->
                 
                     <div class="details_bottom">
                         <div ><span>Closing Costs:</span> <span>$1,500.00</span></div>
@@ -431,6 +449,27 @@
 });
 
   </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const input = document.getElementById("loanInput");
+    const leftBtn = document.querySelector(".left-btn");
+    const rightBtn = document.querySelector(".right-btn");
+
+    // Decrease value on left button click
+    leftBtn.addEventListener("click", function () {
+      let value = parseInt(input.value) || 0;
+      input.value = Math.max(0, value - 1);
+    });
+
+    // Increase value on right button click
+    rightBtn.addEventListener("click", function () {
+      let value = parseInt(input.value) || 0;
+      input.value = value + 1;
+    });
+  });
+</script>
+
+
   
   
 <script>
@@ -527,9 +566,9 @@
         scale: 1
       }, 0.5);
     
-      setInterval(() => {
-        infiScrollAnim.scrollRight();
-      }, 3000);
+      // setInterval(() => {
+      //   infiScrollAnim.scrollRight();
+      // }, 3000);
     
       document.querySelector('.chevron-left')?.addEventListener('click', () => infiScrollAnim.scrollLeft());
       document.querySelector('.chevron-right')?.addEventListener('click', () => infiScrollAnim.scrollRight());
